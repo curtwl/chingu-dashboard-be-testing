@@ -33,7 +33,7 @@ import { AbilitiesGuard } from "./auth/guards/abilities.guard";
                     { path: "/", module: TechsModule },
                     { path: "/", module: FeaturesModule },
                     {
-                        path: "teams/:teamId/ideations",
+                        path: "/",
                         module: IdeationsModule,
                     },
                     { path: "sprints", module: SprintsModule },

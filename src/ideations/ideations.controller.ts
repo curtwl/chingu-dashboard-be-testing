@@ -55,7 +55,7 @@ export class IdeationsController {
         type: IdeationResponse,
     })
     @CheckAbilities({ action: Action.Create, subject: "Ideation" })
-    @Post()
+    @Post("teams/:teamId/ideations")
     createIdeation(
         @Request() req: CustomRequest,
         @Param("teamId", ParseIntPipe) teamId: number,
@@ -94,7 +94,7 @@ export class IdeationsController {
         type: IdeationVoteResponse,
     })
     @CheckAbilities({ action: Action.Create, subject: "Ideation" })
-    @Post("/:ideationId/ideation-votes")
+    @Post("teams/:teamId/ideations/:ideationId/ideation-votes")
     createIdeationVote(
         @Request() req: CustomRequest,
         @Param("teamId", ParseIntPipe) teamId: number,
@@ -122,7 +122,7 @@ export class IdeationsController {
         type: TeamIdeationsResponse,
     })
     @CheckAbilities({ action: Action.Read, subject: "Ideation" })
-    @Get()
+    @Get("teams/:teamId/ideations")
     getIdeationsByVoyageTeam(
         @Param("teamId", ParseIntPipe) teamId: number,
         @Request() req: CustomRequest,
@@ -151,7 +151,7 @@ export class IdeationsController {
         type: IdeationResponse,
     })
     @CheckAbilities({ action: Action.Update, subject: "Ideation" })
-    @Patch("/:ideationId")
+    @Patch("ideations/:ideationId")
     updateIdeation(
         @Request() req: CustomRequest,
         @Param("ideationId", ParseIntPipe) ideationId: number,
@@ -197,7 +197,7 @@ export class IdeationsController {
         type: ConflictErrorResponse,
     })
     @CheckAbilities({ action: Action.Delete, subject: "Ideation" })
-    @Delete("/:ideationId")
+    @Delete("ideations/:ideationId")
     deleteIdeation(
         @Request() req: CustomRequest,
         @Param("teamId", ParseIntPipe) teamId: number,
@@ -227,7 +227,7 @@ export class IdeationsController {
         type: IdeationVoteResponse,
     })
     @CheckAbilities({ action: Action.Delete, subject: "Ideation" })
-    @Delete("/:ideationId/ideation-votes")
+    @Delete("ideations/:ideationId/ideation-votes")
     deleteIdeationVote(
         @Request() req: CustomRequest,
         @Param("teamId", ParseIntPipe) teamId: number,
@@ -278,7 +278,7 @@ export class IdeationsController {
         example: 1,
     })
     @CheckAbilities({ action: Action.Manage, subject: "Ideation" })
-    @Post("/:ideationId/select")
+    @Post("ideations/:ideationId/select")
     setIdeationSelection(
         @Request() req: CustomRequest,
         @Param("teamId", ParseIntPipe) teamId: number,
@@ -318,7 +318,7 @@ export class IdeationsController {
         example: 1,
     })
     @CheckAbilities({ action: Action.Manage, subject: "all" })
-    @Post("/reset-selection")
+    @Post("teams/:teamId/ideations/reset-selection")
     resetIdeationSelection(
         @Request() req: CustomRequest,
         @Param("teamId", ParseIntPipe) teamId: number,
